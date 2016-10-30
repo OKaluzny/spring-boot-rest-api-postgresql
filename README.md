@@ -1,4 +1,4 @@
-# REST Service in Spring Boot
+# RESTful Service in Spring Boot
 
 Simple example of a REST Service in Spring Boot.
 
