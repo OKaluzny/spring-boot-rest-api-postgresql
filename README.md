@@ -2,7 +2,7 @@
 
 Simple example of a RESTful Service in Spring Boot.
 
-To run this project
+To run this application:
 ```bash
 mvn spring-boot:run
 ```
