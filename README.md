@@ -1,6 +1,4 @@
-# RESTful Service in Spring Boot with basic authentication
-
-Simple example of a RESTful Service in Spring Boot.
+# Simple Spring Boot RESTful web service with basic authentication
 
 To run this application:
 ```bash

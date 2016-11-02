@@ -1,0 +1,27 @@
+ Spring Boot configuration
+spring:
+  profiles:
+    active: development
+
+# Server configuration
+server:
+  port: 8080
+  sessionTimeout: 30
+
+#PackagesToScan
+entitymanager:
+  packagesToScan: com.kaluzny.domain
+
+# Database
+dataSource:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:postgresql://localhost:5432/book_db?createDatabaseIfNotExist=true
+  username: postgres
+  password: postgres
+
+# Hibernate
+hibernate:
+  dialect: org.hibernate.dialect.PostgreSQLDialect
+  hbm2ddl.auto: update
+  show_sql: true
+  format_sql: true
