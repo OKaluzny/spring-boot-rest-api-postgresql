@@ -1,4 +1,4 @@
- Spring Boot configuration
+# Spring Boot configuration
 spring:
   profiles:
     active: development
@@ -14,7 +14,7 @@ entitymanager:
 
 # Database
 dataSource:
-  driverClassName: com.mysql.jdbc.Driver
+  driverClassName: org.postgresql.Driver
   url: jdbc:postgresql://localhost:5432/book_db?createDatabaseIfNotExist=true
   username: postgres
   password: postgres
