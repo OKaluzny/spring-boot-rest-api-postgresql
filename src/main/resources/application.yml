@@ -2,6 +2,12 @@
 spring:
   profiles:
     active: development
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    org.springframework: INFO
+    org.hibernate: DEBUG
 
 # Server configuration
 server:
