@@ -2,11 +2,11 @@ package com.kaluzny.web;
 
 import com.kaluzny.domain.Book;
 import com.kaluzny.domain.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
 import java.util.Collection;
 
 @RestController
@@ -15,7 +15,7 @@ public class BookController {
 
     private BookRepository repository;
 
-    @Autowired
+    @Inject
     public void setRepository(BookRepository repository) {
         this.repository = repository;
     }
