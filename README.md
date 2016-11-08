@@ -1,5 +1,7 @@
 # Simple Spring Boot RESTful web service with PostgreSQL database and basic authentication.
 
+[![Build Status](https://travis-ci.org/OKaluzny/spring-boot-rest.svg?branch=master)](https://travis-ci.org/OKaluzny/spring-boot-rest)
+
 To run this application:
 ```bash
 mvn spring-boot:run
