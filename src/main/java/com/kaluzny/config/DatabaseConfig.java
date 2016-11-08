@@ -5,9 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.inject.Inject;
@@ -17,13 +16,6 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 public class DatabaseConfig {
-
-    private LocalContainerEntityManagerFactoryBean entityManagerFactory;
-
-    @Inject
-    public void setEntityManagerFactory(LocalContainerEntityManagerFactoryBean entityManagerFactory) {
-        this.entityManagerFactory = entityManagerFactory;
-    }
 
     private Environment env;
 
@@ -43,26 +35,24 @@ public class DatabaseConfig {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource(dataSource());
-        entityManagerFactoryBean.setPackagesToScan(env.getProperty("entitymanager.packagesToScan"));
-        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        // Hibernate properties
-        Properties jpaProperties = new Properties();
-        jpaProperties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
-        jpaProperties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
-        jpaProperties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-        jpaProperties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
-        entityManagerFactoryBean.setJpaProperties(jpaProperties);
+    public LocalSessionFactoryBean sessionFactory() {
+        LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
+        sessionFactoryBean.setDataSource(dataSource());
+        sessionFactoryBean.setPackagesToScan(env.getProperty("entitymanager.packagesToScan"));
+        Properties hibernateProperties = new Properties();
+        hibernateProperties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        hibernateProperties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+        hibernateProperties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+        hibernateProperties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
+        sessionFactoryBean.setHibernateProperties(hibernateProperties);
 
-        return entityManagerFactoryBean;
+        return sessionFactoryBean;
     }
 
     @Bean
-    public JpaTransactionManager transactionManager() {
-        JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory.getObject());
+    public HibernateTransactionManager transactionManager() {
+        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+        transactionManager.setSessionFactory(sessionFactory().getObject());
         return transactionManager;
     }
 
