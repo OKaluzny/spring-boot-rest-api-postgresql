@@ -22,7 +22,7 @@
     </properties>
 
     <dependencies>
-
+        <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -50,6 +50,12 @@
             <artifactId>postgresql</artifactId>
             <version>9.4-1201-jdbc41</version>
             <scope>runtime</scope>
+        </dependency>
+        <!-- Java EE -->
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
         </dependency>
 
     </dependencies>

@@ -19,7 +19,7 @@ entitymanager:
   packagesToScan: com.kaluzny.domain
 
 # Database
-dataSource:
+database:
   driverClassName: org.postgresql.Driver
   url: jdbc:postgresql://localhost:5432/book_db?createDatabaseIfNotExist=true
   username: postgres
