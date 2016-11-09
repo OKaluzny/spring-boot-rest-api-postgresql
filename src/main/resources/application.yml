@@ -15,7 +15,7 @@ server:
   sessionTimeout: 30
 
 #PackagesToScan
-entitymanager:
+entityManager:
   packagesToScan: com.kaluzny.domain
 
 # Database
