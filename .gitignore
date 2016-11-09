@@ -1,6 +1,6 @@
 # Maven
 target
-.bat
+
 
 # Eclipse
 .project
@@ -11,3 +11,4 @@ target
 .idea
 
 *.iml
+*.bat

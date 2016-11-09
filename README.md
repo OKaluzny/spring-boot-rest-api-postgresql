@@ -1,8 +1,9 @@
 # Plain RESTful Web Service with Spring Boot.
 
 [![Build Status](https://travis-ci.org/OKaluzny/RESTfulWebService.svg?branch=master)](https://travis-ci.org/OKaluzny/RESTfulWebService)
-#
+
 * Using PostgreSQL database, Hibernate and basic authentication.
+#
 
 To run this application:
 ```bash
