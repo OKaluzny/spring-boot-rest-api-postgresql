@@ -61,7 +61,7 @@
     </dependencies>
 
     <build>
-        <finalName>REST Service in Spring Boot</finalName>
+        <finalName>REST Web Service in Spring Boot</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

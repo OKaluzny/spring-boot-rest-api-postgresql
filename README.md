@@ -9,6 +9,8 @@ mvn spring-boot:run
 
 # The example in the Postman:
 
-![alt tag](http://i.piccy.info/i9/e228b79b7466d7727f6e9478ea10d6b4/1477941863/61285/1085055/basic_auth.jpg)
+![alt tag](http://i.piccy.info/i9/947bc7454a432e884035a14f4dd00320/1478693910/81237/1085055/rest1.jpg)
 
-![alt tag](http://i.piccy.info/i9/c4a2c387198c11aa575c94973c16eb69/1478170788/61589/1085055/basedata.jpg)
+![alt tag](http://i.piccy.info/i9/141ca6b46d15417c9b5d29664766bc73/1478694448/63256/1085055/rest2.jpg)
+
+![alt tag](http://i.piccy.info/i9/095db04eb447c347cd736bdba072777d/1478694493/64447/1085055/rest3.jpg)

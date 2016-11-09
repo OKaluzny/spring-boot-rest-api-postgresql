@@ -1,9 +1,8 @@
 package com.kaluzny.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Book {
@@ -13,11 +12,15 @@ public class Book {
     private Long id;
     private String name;
     private String description;
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "tag")
+    @Column(name = "Value")
+    private List<String> tags = new ArrayList<>();
 
-    public Book(Long id, String name, String description) {
-        this.id = id;
+    public Book(String name, String description, List<String> tags) {
         this.name = name;
         this.description = description;
+        this.tags = tags;
     }
 
     public Book() {
@@ -33,5 +36,23 @@ public class Book {
 
     public String getDescription() {
         return description;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", tags=" + tags +
+                '}';
     }
 }
