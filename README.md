@@ -1,16 +1,20 @@
-# Plain RESTful Web Service with Spring Boot.
+## Plain RESTful Web Service with Spring Boot.
 
 [![Build Status](https://travis-ci.org/OKaluzny/RESTfulWebService.svg?branch=master)](https://travis-ci.org/OKaluzny/RESTfulWebService)
 
-* Using PostgreSQL database, Hibernate and basic authentication.
+### Used tools:
+* PostgreSQL database;
+* Hibernate;
+* Basic authentication.
 
 
-To run this application:
+#####To run this application use:
+
 ```bash
 mvn spring-boot:run
 ```
 
-# The example in the Postman:
+### The view in the Postman:
 
 ![alt tag](http://i.piccy.info/i9/947bc7454a432e884035a14f4dd00320/1478693910/81237/1085055/rest1.jpg)
 
