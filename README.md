@@ -1,6 +1,6 @@
-## Plain RESTful Web Service with Spring Boot.
+## Plain REST API CRUD with Spring Boot and PostgreSQL.
 
-[![Build Status](https://travis-ci.org/OKaluzny/RESTfulWebService.svg?branch=master)](https://travis-ci.org/OKaluzny/RESTfulWebService)
+[![Build Status](https://travis-ci.org/OKaluzny/springboot-rest-api-postgresql.svg?branch=master)](https://travis-ci.org/OKaluzny/springboot-rest-api-postgresql)
 
 ### Used tools:
 * PostgreSQL database;
