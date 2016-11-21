@@ -2,11 +2,13 @@
 
 [![Build Status](https://travis-ci.org/OKaluzny/springboot-rest-api-postgresql.svg?branch=master)](https://travis-ci.org/OKaluzny/springboot-rest-api-postgresql)
 
-### Used tools:
+### Technology stack:
+
+* Spring Boot;
+* Spring MVC;
+* Spring Security (as basic authentication);
 * PostgreSQL database;
 * Hibernate;
-* Basic authentication.
-
 
 #####To run this application use:
 
@@ -16,8 +18,4 @@ mvn spring-boot:run
 
 ### The view in the Postman:
 
-![alt tag](http://i.piccy.info/i9/947bc7454a432e884035a14f4dd00320/1478693910/81237/1085055/rest1.jpg)
-
-![alt tag](http://i.piccy.info/i9/141ca6b46d15417c9b5d29664766bc73/1478694448/63256/1085055/rest2.jpg)
-
-![alt tag](http://i.piccy.info/i9/095db04eb447c347cd736bdba072777d/1478694493/64447/1085055/rest3.jpg)
+![alt tag](http://i.piccy.info/i9/6fe13c87057a456bf9d25c151197c4d9/1479742734/78918/1085055/restpro.jpg)

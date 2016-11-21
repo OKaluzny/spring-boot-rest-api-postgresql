@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping("/api/books")
 public class BookController {
 
     private BookRepository repository;
