@@ -7,13 +7,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/books")
-public class BookController {
+public class BookRestController {
 
     private BookRepository repository;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Inject
     public void setRepository(BookRepository repository) {
@@ -21,9 +26,15 @@ public class BookController {
     }
 
     @RequestMapping(
+            method = RequestMethod.POST)
+    public ResponseEntity<?> addBook(@RequestBody Book book) {
+        return new ResponseEntity<>(repository.save(book), HttpStatus.CREATED);
+    }
+
+    @RequestMapping(
             method = RequestMethod.GET)
     public ResponseEntity<Collection<Book>> getAllBooks() {
-        return new ResponseEntity<>((Collection<Book>) repository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
     }
 
     @RequestMapping(
@@ -41,9 +52,16 @@ public class BookController {
     }
 
     @RequestMapping(
-            method = RequestMethod.POST)
-    public ResponseEntity<?> addBook(@RequestBody Book book) {
-        return new ResponseEntity<>(repository.save(book), HttpStatus.CREATED);
+            value = "/{id}",
+            method = RequestMethod.PUT)
+    public ResponseEntity<Book> updateUserFromDB(@PathVariable("id") long id, @RequestBody Book book) {
+
+        Book currentBook = repository.findOne(id);
+        currentBook.setName(book.getName());
+        currentBook.setDescription(book.getDescription());
+        currentBook.setTags(book.getTags());
+
+        return new ResponseEntity<>(repository.save(currentBook), HttpStatus.OK);
     }
 
     @RequestMapping(
