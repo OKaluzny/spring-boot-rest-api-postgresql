@@ -7,8 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.Collection;
 
 @RestController
@@ -16,9 +14,6 @@ import java.util.Collection;
 public class BookRestController {
 
     private BookRepository repository;
-
-    @PersistenceContext
-    private EntityManager entityManager;
 
     @Inject
     public void setRepository(BookRepository repository) {
@@ -38,15 +33,15 @@ public class BookRestController {
     }
 
     @RequestMapping(
-            method = RequestMethod.GET,
-            value = "/{id}")
+            value = "/{id}",
+            method = RequestMethod.GET)
     public ResponseEntity<Book> getBookWithId(@PathVariable Long id) {
         return new ResponseEntity<>(repository.findOne(id), HttpStatus.OK);
     }
 
     @RequestMapping(
-            method = RequestMethod.GET,
-            params = {"name"})
+            params = {"name"},
+            method = RequestMethod.GET)
     public ResponseEntity<Collection<Book>> findBookWithName(@RequestParam(value = "name") String name) {
         return new ResponseEntity<>(repository.findByName(name), HttpStatus.OK);
     }
@@ -65,8 +60,8 @@ public class BookRestController {
     }
 
     @RequestMapping(
-            method = RequestMethod.DELETE,
-            value = "/{id}")
+            value = "/{id}",
+            method = RequestMethod.DELETE)
     public void deleteBookWithId(@PathVariable Long id) {
         repository.delete(id);
     }
