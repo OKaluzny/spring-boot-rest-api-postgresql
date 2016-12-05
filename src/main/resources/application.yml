@@ -4,7 +4,7 @@ spring:
     active: development
 # Database
   datasource:
-    driverClassName: org.postgresql.Driver
+    driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/book_db?createDatabaseIfNotExist=true
     username: postgres
     password: postgres
@@ -24,7 +24,6 @@ logging:
   level:
     org.springframework: INFO
     org.hibernate: DEBUG
-
 # Server configuration
 server:
   port: 8080
