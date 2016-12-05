@@ -14,7 +14,7 @@ public class Book {
     private String name;
     private String description;
 
-    @ElementCollection(fetch = FetchType.LAZY)
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "tag")
     @Column(name = "Value")
     private List<String> tags = new ArrayList<>();
