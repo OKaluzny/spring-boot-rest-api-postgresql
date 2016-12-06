@@ -10,4 +10,5 @@ target
 .idea
 *.iml
 
-*.bat
+/app-build-deploy.bat
+/travis-ci.bat
