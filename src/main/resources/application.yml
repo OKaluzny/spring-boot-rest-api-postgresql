@@ -28,3 +28,8 @@ logging:
 server:
   port: 8080
   sessionTimeout: 30
+# Security configuration
+security:
+  user:
+    name: user
+    password: user
