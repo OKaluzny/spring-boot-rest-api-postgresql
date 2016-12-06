@@ -9,7 +9,7 @@
 * Spring Data;
 * PostgreSQL database;
 * Hibernate;
-* Spring Security (as basic authentication);
+* Spring Security (as basic authentication).
 
 #####To run this application use:
 
