@@ -7,9 +7,9 @@
 * Spring Boot;
 * Spring Web;
 * Spring Data;
-* Spring Security (as basic authentication);
 * PostgreSQL database;
 * Hibernate;
+* Spring Security (as basic authentication);
 
 #####To run this application use:
 
