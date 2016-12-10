@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.kaluzny</groupId>
-    <artifactId>springboot-rest-api-postgresql</artifactId>
+    <artifactId>spring-boot-rest-api-postgresql</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -57,11 +57,9 @@
             <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
-
     </dependencies>
 
     <build>
-        <finalName>REST Web Service in Spring Boot</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
