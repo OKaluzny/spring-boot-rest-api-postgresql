@@ -49,7 +49,7 @@ public class BookRestController {
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.PUT)
-    public ResponseEntity<Book> updateUserFromDB(@PathVariable("id") long id, @RequestBody Book book) {
+    public ResponseEntity<Book> updateBookFromDB(@PathVariable("id") long id, @RequestBody Book book) {
 
         Book currentBook = repository.findOne(id);
         currentBook.setName(book.getName());
