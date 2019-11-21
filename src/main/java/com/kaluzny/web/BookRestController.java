@@ -2,73 +2,67 @@ package com.kaluzny.web;
 
 import com.kaluzny.domain.Book;
 import com.kaluzny.domain.BookRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.inject.Inject;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/api/books")
+@RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequiredArgsConstructor
 public class BookRestController {
 
-    private BookRepository repository;
+    private final BookRepository repository;
 
-    @Inject
-    public void setRepository(BookRepository repository) {
-        this.repository = repository;
+    @PostMapping("/books")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Book addBook(@RequestBody Book book) {
+        return repository.save(book);
     }
 
-    @RequestMapping(
-            method = RequestMethod.POST)
-    public ResponseEntity<?> addBook(@RequestBody Book book) {
-        return new ResponseEntity<>(repository.save(book), HttpStatus.CREATED);
+    @GetMapping("/books")
+    @ResponseStatus(HttpStatus.OK)
+    public Collection<Book> getAllBooks() {
+        return repository.findAll();
     }
 
-    @RequestMapping(
-            method = RequestMethod.GET)
-    public ResponseEntity<Collection<Book>> getAllBooks() {
-        return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
+    @GetMapping("/books/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Book getBookWithId(@PathVariable Long id) {
+        return repository.findOne(id);
     }
 
-    @RequestMapping(
-            value = "/{id}",
-            method = RequestMethod.GET)
-    public ResponseEntity<Book> getBookWithId(@PathVariable Long id) {
-        return new ResponseEntity<>(repository.findOne(id), HttpStatus.OK);
+    @GetMapping(value = "/books", params = {"name"})
+    @ResponseStatus(HttpStatus.OK)
+    public Collection<Book> findBookWithName(@RequestParam(value = "name") String name) {
+        return repository.findByName(name);
     }
 
-    @RequestMapping(
-            params = {"name"},
-            method = RequestMethod.GET)
-    public ResponseEntity<Collection<Book>> findBookWithName(@RequestParam(value = "name") String name) {
-        return new ResponseEntity<>(repository.findByName(name), HttpStatus.OK);
+    @PutMapping("/books/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Book updateBookFromDB(@PathVariable("id") long id, @RequestBody Book book) {
+        return repository.save(putBook(id, book));
     }
 
-    @RequestMapping(
-            value = "/{id}",
-            method = RequestMethod.PUT)
-    public ResponseEntity<Book> updateBookFromDB(@PathVariable("id") long id, @RequestBody Book book) {
-
-        Book currentBook = repository.findOne(id);
-        currentBook.setName(book.getName());
-        currentBook.setDescription(book.getDescription());
-        currentBook.setTags(book.getTags());
-
-        return new ResponseEntity<>(repository.save(currentBook), HttpStatus.OK);
-    }
-
-    @RequestMapping(
-            value = "/{id}",
-            method = RequestMethod.DELETE)
+    @DeleteMapping("/books/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBookWithId(@PathVariable Long id) {
         repository.delete(id);
     }
 
-    @RequestMapping(
-            method = RequestMethod.DELETE)
+    @DeleteMapping("/books")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteAllBooks() {
         repository.deleteAll();
+    }
+
+    private Book putBook(long id, Book existingBook) {
+        Book putBook = repository.findOne(id);
+        putBook.setName(existingBook.getName());
+        putBook.setDescription(existingBook.getDescription());
+        putBook.setTags(existingBook.getTags());
+        return putBook;
     }
 }
