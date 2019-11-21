@@ -11,12 +11,13 @@ spring:
 # JPA properties
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: none # When you launch the application for the first time - switch "none" at "create"
     show-sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
     generate-ddl: false
+
 # Logger configuration
 logging:
   pattern:
@@ -26,7 +27,7 @@ logging:
     org.hibernate: DEBUG
 # Server configuration
 server:
-  port: 8080
+  port: 8091
   sessionTimeout: 30
 # Security configuration
 security:
