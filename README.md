@@ -9,6 +9,7 @@
 * Spring Data;
 * PostgreSQL database;
 * Hibernate;
+* Lombok;
 * Spring Security (as basic authentication).
 
 #### To run this application use:
