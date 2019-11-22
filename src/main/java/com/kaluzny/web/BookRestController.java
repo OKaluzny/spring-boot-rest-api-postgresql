@@ -8,10 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Collection;
+import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 @Slf4j
 public class BookRestController {
@@ -40,7 +42,8 @@ public class BookRestController {
     @ResponseStatus(HttpStatus.OK)
     public Book getBookById(@PathVariable Long id) {
         log.info("getBookById() - start: id = {}", id);
-        Book receivedBook = repository.findOne(id);
+        Book receivedBook = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Entity with id = Not found"));
         log.info("getBookById() - end: book = {}", receivedBook.getId());
         return receivedBook;
     }
@@ -67,7 +70,7 @@ public class BookRestController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeBookById(@PathVariable Long id) {
         log.info("removeBookById() - start: id = {}", id);
-        repository.delete(id);
+        repository.deleteById(id);
         log.info("removeBookById() - end: id = {}", id);
     }
 
@@ -81,7 +84,8 @@ public class BookRestController {
 
     private Book putBook(long id, Book existingBook) {
         log.info("putBook() - start: id = {} existingBook = {}", id, existingBook);
-        Book putBook = repository.findOne(id);
+        Book putBook = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Entity with id = Not found"));
         putBook.setName(existingBook.getName());
         putBook.setDescription(existingBook.getDescription());
         putBook.setTags(existingBook.getTags());
