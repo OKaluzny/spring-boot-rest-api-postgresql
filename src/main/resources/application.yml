@@ -10,7 +10,7 @@ spring:
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/book_db?createDatabaseIfNotExist=true
+    url: jdbc:postgresql://localhost:5432/book_db
     username: postgres
     password: postgres
   # JPA properties
