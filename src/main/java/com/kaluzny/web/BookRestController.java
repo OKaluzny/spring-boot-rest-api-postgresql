@@ -60,7 +60,14 @@ public class BookRestController {
     @ResponseStatus(HttpStatus.OK)
     public Book refreshBook(@PathVariable("id") long id, @RequestBody Book book) {
         log.info("refreshBook() - start: id = {}, book = {}", id, book);
-        Book updatedBook = repository.save(putBook(id, book));
+        Book updatedBook = repository.findById(id)
+                .map(entity -> {
+                    entity.setName(book.getName());
+                    entity.setDescription(book.getDescription());
+                    entity.setTags(book.getTags());
+                    return repository.save(entity);
+                })
+                .orElseThrow(() -> new EntityNotFoundException("Book with id = Not found"));
         log.info("refreshBook() - end: updatedBook = {}", updatedBook);
         return updatedBook;
     }
@@ -79,16 +86,5 @@ public class BookRestController {
         log.info("removeAllBooks() - start");
         repository.deleteAll();
         log.info("removeAllBooks() - end");
-    }
-
-    private Book putBook(long id, Book existingBook) {
-        log.info("putBook() - start: id = {} existingBook = {}", id, existingBook);
-        Book putBook = repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Entity with id = Not found"));
-        putBook.setName(existingBook.getName());
-        putBook.setDescription(existingBook.getDescription());
-        putBook.setTags(existingBook.getTags());
-        log.info("putBook() - end: putBook = {}", putBook);
-        return putBook;
     }
 }
