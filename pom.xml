@@ -16,7 +16,7 @@
         <java.version>1.8</java.version>
         <spring.boot.version>2.2.1.RELEASE</spring.boot.version>
         <lombok.version>1.18.10</lombok.version>
-        <postgreSQL.version>42.2.8</postgreSQL.version>
+        <postgreSQL.version>42.2.25</postgreSQL.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     </properties>
 
