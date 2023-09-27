@@ -2,13 +2,14 @@ package com.kaluzny.web;
 
 import com.kaluzny.domain.Book;
 import com.kaluzny.domain.BookRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityNotFoundException;
+
 import java.util.Collection;
 
 @RestController

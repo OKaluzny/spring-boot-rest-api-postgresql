@@ -4,7 +4,7 @@
 
 ### Technology stack:
 
-* Spring Boot 2;
+* Spring Boot 3;
 * Spring Web;
 * Spring Data;
 * PostgreSQL database;
@@ -20,5 +20,3 @@ mvn spring-boot:run
 
 ### The view in the Postman: 
 [http://localhost:8080/api/books](http://localhost:8080/api/books)
-
-![alt tag]()
